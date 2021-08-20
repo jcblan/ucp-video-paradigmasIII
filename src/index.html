@@ -17,21 +17,48 @@
         .content {
             position: fixed;
             bottom: 0;
-            color: #f1f1f1;
+            color: white;
             padding: 20px;
+        }
+        #btn{
+            background-color: black;
+            color: white;
         }
     </style>
     <title>UCP Video</title>
 </head>
 
 <body>
-    <video autoplay muted loop id="video">
-        <source src="assets/video.mp4" type="video/mp4">
+    <video autoplay muted loop id="video" src="assets/video.mp4">
     </video>
+
     <div class="content">
-        <h3>Julio Blanco</h3>
+        <h1 id="texto">Julio Blanco</h1>
         <p>Paradigmas III</p>
+        <input id="btn" type="button" value="Cambiar" onclick="cambiarVideo()">
     </div>
+    
+    <script>
+        var flag = true;
+
+        var texto = document.getElementById("texto");
+        var video = document.getElementById("video");
+
+        function cambiarVideo(){
+            if(flag){
+                video.src = "assets/video-alt.mp4";
+                flag = !flag;
+            }else {
+                video.src = "assets/video.mp4";
+                flag = !flag;
+            }
+        }
+
+        texto.addEventListener("click", cambiarVideo());
+        video.addEventListener("click", cambiarVideo());
+
+    </script>
+
 </body>
 
 </html>
